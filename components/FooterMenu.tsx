@@ -3,12 +3,10 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 const inter = Inter({ subsets: ["latin"] });
 
-
-
 export default function FooterMenu({ menuItems }: { menuItems: any }) {
   return (
     <div className="">
-      <div className="grid grid-cols-4 justify-between">
+      <div className="grid grid-cols-3 justify-between">
         {menuItems.map((menuItem: any) => (
             <Link key={menuItem.name}
               href={menuItem.link}

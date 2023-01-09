@@ -1,27 +1,51 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import styles from "../styles/Home.module.css";
 
-const inter = Inter({ subsets: ['latin'] })
+import FooterMenu from "../components/FooterMenu";
 
+const inter = Inter({ subsets: ["latin"] });
+
+const menuItems = [
+  {
+    name: "Settings",
+    link: "/settings",
+    description: "Learn how to Play the Game",
+  },
+  {
+    name: "Riddles",
+    link: "/riddles",
+    description: "Play different varieties of riddles",
+  },
+  {
+    name: "Fun Facts",
+    link: "/help",
+    description: "Play different varieties of riddles",
+  },  {
+    name: "Trival Game",
+    link: "/help",
+    description: "Play different varieties of riddles",
+  },
+];
+
+console.log(process.env.API_BASE_URL);
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/generate')
-  const data = await res.json() as string
+  const res = await fetch("http://localhost:5100/gen/questions");
+  const data = (await res.json()) as string;
   return {
     props: {
-       data   
-     }
-  }
-}
+      data,
+    },
+  };
+};
 
 interface Props {
-  data: any
+  data: any;
 }
 
-
-export default function Home({ data }: Props = {  data: 'test'}) {
+export default function Home({ data }: Props = { data: "test" }) {
   return (
     <>
       <Head>
@@ -32,17 +56,15 @@ export default function Home({ data }: Props = {  data: 'test'}) {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
-          <p>
-          Test your knowledge!!
-          </p>
-       {JSON.stringify(data)}
+          <p>Test your knowledge!!</p>
+          {JSON.stringify(data)}
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}
+              By{" "}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -56,7 +78,7 @@ export default function Home({ data }: Props = {  data: 'test'}) {
         </div>
 
         <div className={styles.center}>
-       {/*    <Image
+          {/*    <Image
             className={styles.logo}
             src="/next.svg"
             alt="Next.js Logo"
@@ -64,11 +86,10 @@ export default function Home({ data }: Props = {  data: 'test'}) {
             height={37}
             priority
           /> */}
-          <div className={styles.thirteen}>
-            Start The Game
-          </div>
+          <div className={styles.thirteen}>Start The Game</div>
         </div>
 
+        <FooterMenu menuItems={menuItems} />
         <div className={styles.grid}>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -77,7 +98,7 @@ export default function Home({ data }: Props = {  data: 'test'}) {
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
+              Riddles <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
               Find in-depth information about Next.js features and&nbsp;API.
@@ -129,5 +150,5 @@ export default function Home({ data }: Props = {  data: 'test'}) {
         </div>
       </main>
     </>
-  )
+  );
 }
