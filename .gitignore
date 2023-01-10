@@ -37,3 +37,8 @@ next-env.d.ts
 
 .vscode
 .env
+
+yarn.lock
+
+package-lock.json
+
