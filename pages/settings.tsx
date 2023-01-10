@@ -1,3 +1,7 @@
+export const config = {
+    runtime: 'experimental-edge',
+  }
+
 const Settings = () => {
     return (
         <div>

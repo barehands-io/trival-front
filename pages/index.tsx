@@ -52,6 +52,11 @@ interface Props {
   data: any;
 }
 
+export const config = {
+  runtime: 'experimental-edge',
+}
+
+
 export default function Home({ data }: Props = { data: "test" }) {
   return (
     <>
