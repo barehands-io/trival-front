@@ -1,11 +1,19 @@
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5100/riddle/index");
-  const data = (await res.json()) as string;
-  return {
-    props: {
-      data,
-    },
-  };
+  try {
+    const res = await fetch("http://localhost:5100/riddle/index");
+    const data = (await res.json()) as string;
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        data: [],
+      },
+    };
+  }
 };
 
 interface Props {
@@ -24,20 +32,11 @@ export default function RiddlesPage({ data }: any) {
               {data.riddles.map((item: any, index: any) => {
                 return (
                   <div key={index}>
-                
                     {/* <p>{item.explanation}</p> */}
-                    <h1 className="text-3xl italic">
-                    {item.riddle}
-                    </h1>
+                    <h1 className="text-3xl italic">{item.riddle}</h1>
 
-                    <p className="text-xl">
-                    {item.answer}
-                    </p>
-                    <p>
-
-                    {item.explanation}
-                        
-                        </p>
+                    <p className="text-xl">{item.answer}</p>
+                    <p>{item.explanation}</p>
                   </div>
                 );
               })}

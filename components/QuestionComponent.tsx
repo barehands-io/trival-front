@@ -23,7 +23,7 @@ export default function QuestionComponent({ question }: any) {
     }
 
 
-    console.log(e.target.textContent, answer);
+    // console.log(e.target.textContent, answer);
   }
 
   return (

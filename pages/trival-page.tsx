@@ -22,9 +22,10 @@ export const getStaticProps = async () => {
       },
     };
   } catch (error) {
-    console.log(error);
     return {
-      props: {},
+      props: {
+        data: [],
+      },
     };
   }
 };
