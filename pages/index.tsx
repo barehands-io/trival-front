@@ -15,7 +15,7 @@ const menuItems = [
   },
   {
     name: "Riddles",
-    link: "/riddles",
+    link: "/help",
     description: "Play different varieties of riddles",
   },
   {
