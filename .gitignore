@@ -1,0 +1,12 @@
+.vscode
+.idea
+node_modules
+*.sqlite
+*.log
+yarn.lock
+build
+.env
+package-lock.json
+```
+.env
+package-lock.json
