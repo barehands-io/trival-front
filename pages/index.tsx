@@ -20,7 +20,7 @@ const menuItems = [
   },
   {
     name: "Fun Facts",
-    link: "/help",
+    link: "/fun-facts",
     description: "Play different varieties of riddles",
   },
   {
@@ -97,7 +97,7 @@ export default function Home({ data }: Props = { data: "test" }) {
         </div>
 
         <FooterMenu menuItems={menuItems} />
-      
+
       </main>
     </>
   );

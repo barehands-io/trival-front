@@ -44,3 +44,4 @@ package-lock.json
 
 *.pack
 *.pack
+.next/server/pages-manifest.json
