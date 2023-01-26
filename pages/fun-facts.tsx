@@ -40,13 +40,11 @@ export default function FunFactPage({ data, endpointUrl }: Props) {
       "https://res.cloudinary.com/dmjluoznt/image/upload/v1674715214/_Galapagos_Islands_Endemic_Species.jpg.png",
     imageName: "_Galapagos_Islands_Endemic_Species.jpg",
   };
-  const [funFact, setFunFact] = useState(data);
+  const [funFact, setFunFact] = useState(dummy);
   const [loading, setLoading] = useState(false);
   const handleRegenerate = async () => {
     setLoading(true);
     const newData = await fetchFunFact(endpointUrl);
-
-    console.log("regenerate", newData);
 
     setFunFact(newData);
     setLoading(false);
@@ -63,8 +61,11 @@ export default function FunFactPage({ data, endpointUrl }: Props) {
           "radial-gradient(circle, rgba(2, 11, 21, 1) 0%, rgba(8, 61, 85, 1) 76%)",
       }}
     >
-      {loading ? (
-        <div>Loading...</div>
+      {!loading ? (
+        <div>
+          Loading...
+          <i className="fa-duotone fa-spinner-third"></i>
+        </div>
       ) : (
         <div>
           <div>
