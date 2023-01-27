@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
 
+import BusyLoader from "../components/BusyLoader";
+
 interface FunFactProps {
   fact: string;
   imageUrl: string;
@@ -40,7 +42,7 @@ export default function FunFactPage({ data, endpointUrl }: Props) {
       "https://res.cloudinary.com/dmjluoznt/image/upload/v1674715214/_Galapagos_Islands_Endemic_Species.jpg.png",
     imageName: "_Galapagos_Islands_Endemic_Species.jpg",
   };
-  const [funFact, setFunFact] = useState(dummy);
+  const [funFact, setFunFact] = useState(data);
   const [loading, setLoading] = useState(false);
   const handleRegenerate = async () => {
     setLoading(true);
@@ -61,10 +63,9 @@ export default function FunFactPage({ data, endpointUrl }: Props) {
           "radial-gradient(circle, rgba(2, 11, 21, 1) 0%, rgba(8, 61, 85, 1) 76%)",
       }}
     >
-      {!loading ? (
+      {loading ? (
         <div>
-          Loading...
-          <i className="fa-duotone fa-spinner-third"></i>
+          <BusyLoader title="Roaming The world for interesting facts " />
         </div>
       ) : (
         <div>
@@ -78,13 +79,21 @@ export default function FunFactPage({ data, endpointUrl }: Props) {
               </div>
 
               <div className="flex justify-center rounded-lg py-10">
-                <img
+                {/*   <img
                   className="h-[400px] rounded-lg"
                   alt={funFact.imageName}
                   src={funFact.imageUrl}
+                />*/}
+
+                <Image
+                  width={200}
+                  height={300}
+                  className="h-auto w-auto rounded-lg"
+                  src={funFact.imageUrl}
+                  alt={funFact.imageName}
+                  priority={true}
                 />
               </div>
-              {/*<Image width={200} height={300} src={funFact.imageUrl} alt={funFact.imageName}/>*/}
             </div>
           </div>
 
