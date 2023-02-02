@@ -25,7 +25,8 @@ const fetchFunFact = async (endpointUrl: string) => {
 };
 
 export const getStaticProps = async () => {
-  const endpointUrl = process.env.APP_ENDPOINT_URL as string;
+  const dev = process.env.NODE_ENV !== 'production';
+  const endpointUrl = "https://api.damola.co";
   const data = await fetchFunFact(endpointUrl);
   return {
     props: {
@@ -42,6 +43,8 @@ export default function FunFactPage({ data, endpointUrl }: Props) {
       "https://res.cloudinary.com/dmjluoznt/image/upload/v1674715214/_Galapagos_Islands_Endemic_Species.jpg.png",
     imageName: "_Galapagos_Islands_Endemic_Species.jpg",
   };
+
+  
   const [funFact, setFunFact] = useState(data);
   const [loading, setLoading] = useState(false);
   const handleRegenerate = async () => {
